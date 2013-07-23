@@ -1,0 +1,24 @@
+{
+  "name": "mandible",
+  "version": "0.0.0",
+  "description": "html and txt email templates with handlebars",
+  "main": "email.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shtylman/node-mandible.git"
+  },
+  "keywords": [
+    "html",
+    "email",
+    "templates"
+  ],
+  "author": "Roman Shtylman <shtylman@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shtylman/node-mandible/issues"
+  },
+  "dependencies": {
+    "handlebars": "1.0.12",
+    "juice": "0.4.0"
+  }
+}
