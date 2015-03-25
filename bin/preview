@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+
+var querystring = require('querystring');
+var path = require('path');
+
+var express = require('express');
+
+var port = process.argv[2];
+if (!port) {
+    console.error('usage: mailview <port> /path/to/emails/dir');
+    return process.exit(1);
+}
+
+var email_dir = process.argv[3];
+if (!email_dir) {
+    console.error('usage: mailview <port> /path/to/emails/dir');
+    return process.exit(1);
+}
+
+email_dir = path.resolve(email_dir);
+
+// TODO support other mailers
+var mailer = require('../');
+
+var emailer = mailer(email_dir);
+
+var app = express();
+
+app.get('/:template.html', function(req, res, next) {
+    var template = req.param('template');
+    var query = req.query;
+
+    emailer.html(template, query, function(err, html) {
+        if (err) {
+            return next(err);
+        }
+
+        res.send(html);
+    });
+});
+
+app.get('/:template.txt', function(req, res, next) {
+    var template = req.param('template');
+    var query = req.query;
+
+    emailer.txt(template, query, function(err, txt) {
+        if (err) {
+            return next(err);
+        }
+
+        res.send('<pre>' + txt + '</pre>');
+    });
+});
+
+app.get('/:template', function(req, res) {
+    var template = req.param('template');
+    var query = querystring.stringify(req.query);
+
+    var html = '<style>* { margin: 0; padding: 0 }</style>';
+    html += '<iframe style="width: 100%; height: 50%" src="/' + template + '.html?' + query + '"></iframe>';
+    html += '<iframe style="width: 100%; height: 50%" src="/' + template + '.txt?' + query + '"></iframe>';
+
+    res.send(html);
+});
+
+var server = app.listen(port, function() {
+    console.log('mandible running -> http://localhost:' + server.address().port);
+});
+
+// vim: ft=javascript

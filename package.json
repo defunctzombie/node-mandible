@@ -17,8 +17,13 @@
   "bugs": {
     "url": "https://github.com/shtylman/node-mandible/issues"
   },
+  "bin": {
+    "mandible": "./bin/preview"
+  },
   "dependencies": {
-    "handlebars": "1.0.12",
-    "juice": "0.4.0"
+    "handlebars": "3.0.1",
+    "juice": "1.0.0"
+  },
+  "devDependencies": {
   }
 }
