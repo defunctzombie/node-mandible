@@ -1,6 +1,6 @@
 {
   "name": "mandible",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "html and txt email templates with handlebars",
   "main": "email.js",
   "repository": {
@@ -24,6 +24,5 @@
     "handlebars": "3.0.1",
     "juice": "1.0.0"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
