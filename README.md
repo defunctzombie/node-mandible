@@ -13,3 +13,7 @@ mandible.render(name, locals, function(err, text, html) {
     // send email with text and html body parts
 });
 ```
+
+## LICENSE
+
+MIT
