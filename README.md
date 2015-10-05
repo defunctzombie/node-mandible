@@ -14,6 +14,20 @@ mandible.render(name, locals, function(err, text, html) {
 });
 ```
 
+## Layouts
+
+By default, each template is rendered into a layout.txt or layout.html file in the email templates directory. Use the `{{{body}}}` syntax to indicate where in the layout the child template should be inserted.
+
+## Stylesheets
+
+The [juice](https://www.npmjs.com/package/juice) module is used to inline the stylesheet into the html template for portability across email clients.
+
+Just reference the stylesheet file in the layout.html as such
+
+```html
+link rel="stylesheet" href="style.css" />
+```
+
 ## LICENSE
 
 MIT
