@@ -21,8 +21,8 @@
     "mandible": "./bin/preview"
   },
   "dependencies": {
-    "handlebars": "3.0.1",
-    "juice": "1.0.0"
+    "handlebars": "4.0.5",
+    "juice": "1.11"
   },
   "devDependencies": {}
 }
